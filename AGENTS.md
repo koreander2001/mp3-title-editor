@@ -13,7 +13,7 @@ Windows 11向けのMP3タグ編集アプリ。選択したフォルダの直下�
 ## 2. 開発環境
 
 - uvで取得したCPython 3.12を使用する。依存関係は `pyproject.toml` と `uv.lock` で管理し、環境の同期には `uv sync --locked` を使う。
-- GUIはwxPython、ID3タグの入出力はMutagenを使用する。テストはpytest、lintと整形はRuffを使用する。
+- GUIはwxPython、ID3タグの入出力はMutagenを使用する。テストはpytest、lintと整形はRuff、型チェックはmypyを使用する。mypyは開発依存として追加し、`pyproject.toml` でPython 3.12向けに設定する。
 
 ## 3. コーディング規約
 
@@ -32,7 +32,7 @@ Windows 11向けのMP3タグ編集アプリ。選択したフォルダの直下�
 
 - 機能の追加・変更や不具合修正と一緒に、関連するテストを追加または更新する。正常系と、変更に関わる失敗・境界条件を検証する。
 - 単体テストでは代替Viewや代替 `TagStore` を使う。タグの読み書きは一時フォルダとテスト用MP3で結合テストを行う。ウィジェット操作は変更内容に応じてWindows 11で確認する。
-- 実装後は対象フェーズに必要なテストを実行する。標準チェックは `uv run --locked pytest`、`uv run --locked ruff check .`、`uv run --locked ruff format --check .` とする。
+- 実装後は対象フェーズに必要なテストを実行する。標準チェックは `uv run --locked pytest`、`uv run --locked ruff check .`、`uv run --locked ruff format --check .`、`uv run --locked mypy src` とする。
 
 ## 6. Codexの作業ルール
 
