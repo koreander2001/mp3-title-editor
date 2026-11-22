@@ -6,7 +6,7 @@
 
 - **目的** — 開発環境を再現可能にし、GUIの起動と自動チェックを実行できるようにする。
 - **実装範囲** — uvによるプロジェクト初期化、基本設計書に沿ったディレクトリ構成、開発ツール、pytest、Ruff、mypyの設定、最小限のwxPython起動口。
-- **主要な作業** — `uv python install 3.12` でCPythonを取得し、`uv python pin 3.12` で使用する系列を指定する。既存のGitリポジトリ内に `src` 構成のパッケージを初期化し、画面層、アプリケーション層、入出力層と、単体・結合・GUIテストのディレクトリを用意する。wxPythonとMutagenを実行時依存、pytest、Ruff、mypyを開発依存に追加する。pytestの探索先を `tests`、Ruffのターゲットを `py312` とし、lintと整形を設定する。mypyは `pyproject.toml` でPython 3.12向けに設定し、アプリケーションコードを型チェックする。依存関係を `uv.lock` に記録する。
+- **主要な作業** — `uv python install 3.15` でCPythonを取得し、`uv python pin 3.15` で使用する系列を指定する。既存のGitリポジトリ内に `src` 構成のパッケージを初期化し、画面層、アプリケーション層、入出力層と、単体・結合・GUIテストのディレクトリを用意する。wxPythonとMutagenを実行時依存、pytest、Ruff、mypyを開発依存に追加する。pytestの探索先を `tests`、Ruffのターゲットを `py315` とし、lintと整形を設定する。mypyは `pyproject.toml` でPython 3.15向けに設定し、アプリケーションコードを型チェックする。依存関係を `uv.lock` に記録する。
 - **完了条件** — ロック済み依存関係から環境を構築でき、空のwxPythonウィンドウを起動・終了できる。
 - **テスト・検証方法** — `uv sync --locked` と `uv run --locked pytest` を実行し、スモークテストでインストール済みパッケージを読み込めることを確認する。`uv run --locked ruff check .`、`uv run --locked ruff format --check .`、`uv run --locked mypy src` を実行し、`uv run --locked python -m mp3_title_editor` で起動を確認する。
 - **依存するフェーズ** — なし。

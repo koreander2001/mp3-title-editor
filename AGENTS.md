@@ -12,8 +12,8 @@ Windows 11向けのMP3タグ編集アプリ。選択したフォルダの直下�
 
 ## 2. 開発環境
 
-- uvで取得したCPython 3.12を使用する。依存関係は `pyproject.toml` と `uv.lock` で管理し、環境の同期には `uv sync --locked` を使う。
-- GUIはwxPython、ID3タグの入出力はMutagenを使用する。テストはpytest、lintと整形はRuff、型チェックはmypyを使用する。mypyは開発依存として追加し、`pyproject.toml` でPython 3.12向けに設定する。
+- uvで取得したCPython 3.15を使用する。依存関係は `pyproject.toml` と `uv.lock` で管理し、環境の同期には `uv sync --locked` を使う。
+- GUIはwxPython、ID3タグの入出力はMutagenを使用する。テストはpytest、lintと整形はRuff、型チェックはmypyを使用する。mypyは開発依存として追加し、`pyproject.toml` でPython 3.15向けに設定する。
 
 ## 3. コーディング規約
 
